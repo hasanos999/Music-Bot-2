@@ -8,19 +8,19 @@ module.exports = {
   name: "bul",
   description: "Müzik OYNAYIN",
   async execute(client, message, args) {
-    //FIRST OF ALL WE WILL ADD ERROR MESSAGE AND PERMISSION MESSSAGE
+  
     if (!args.length) {
-      //IF AUTHOR DIDENT GIVE URL OR NAME
+    
       return message.channel.send("HATA: Bir Söz Veya URL giriniz.`");
     }
 
     const { channel } = message.member.voice;
     if (!channel) {
-      //IF AUTHOR IS NOT IN VOICE CHANNEL
+   
       return message.channel.send("SES KANALINDA OLMALISINIZ: /");
     }
 
-    //WE WILL ADD PERMS ERROR LATER :(
+   
 
     const targetsong = args.join(" ");
     const videoPattern = /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.?be)\/.+$/gi;

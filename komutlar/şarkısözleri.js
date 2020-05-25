@@ -7,7 +7,7 @@ module.exports = {
     
      const { channel } = message.member.voice;
     if (!channel) {
-      //IF AUTHOR IS NOT IN VOICE CHANNEL
+
       return message.channel.send("SES KANALINDA OLMALISINIZ :/");
     }
 

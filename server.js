@@ -4,24 +4,19 @@ const { readdirSync } = require("fs");
 const { join } = require("path");
 const { TOKEN, PREFIX } = require("./config.json")
 
-//CLIENT EVENTS
+
 client.on("ready", () => {
   console.log('Bot Başarılı Bir Şekilde Çalıştı');
   var oyun = [
-        "🏅Yapımcı: LozBey🎖",
-        "🔥Alev Aldı Liman🔥",
-        "✨Hayırlı Ramazanlar✨",
-        "⭐7/24 Aktif⭐️", 
-        "🎧Müzik Botu SUNAR🎧",
-        "🤲Allah Orucunuzu Kabul Etsin🤲",
-        "💎Premium üye olmak için💎"
+        "🏅Pink Code #YÜKSELİŞ"
+        
   ];
 
     setInterval(function() {
 
         var random = Math.floor(Math.random()*(oyun.length-0+1)+0);
 
-        client.user.setActivity(oyun[random], "https://www.instagram.com/yyarpacii" );
+        client.user.setActivity(oyun[random], "https://www.twitch.com/pinkcode" );
         }, 2 * 2500);
 })
 
@@ -48,7 +43,7 @@ client.on("message", message => {
    if (message.author.bot) return;
   if (!message.guild) return;
   
-  if(message.content.startsWith(PREFIX)) { //IF MESSSAGE STARTS WITH MINE BOT PREFIX
+  if(message.content.startsWith(PREFIX)) { 
     
     const args = message.content.slice(PREFIX.length).trim().split(/ +/) //removing prefix from args
     const command = args.shift().toLowerCase();
@@ -57,9 +52,9 @@ client.on("message", message => {
       return;
     } 
     
-  try  { //TRY TO GET COMMAND AND EXECUTE
+  try  { 
       client.commands.get(command).execute(client, message, args)
-    } catch (err) { //IF IT CATCH ERROR
+    } catch (err) { 
       console.log(err)
       message.reply("Bu komutu kullanırken hata alıyorum")
     }

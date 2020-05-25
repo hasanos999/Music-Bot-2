@@ -1,4 +1,4 @@
-//I WILL BE BACK AFTER 5 min
+
 const ytdlDiscord = require("ytdl-core-discord");
 
 module.exports = {
@@ -9,7 +9,7 @@ module.exports = {
       queue.channel.leave();
       message.client.queue.delete(message.guild.id);
       return queue.textChannel
-        .send("Müzik Sırası Artık Sona Erdi 😌")
+        .send("Müzik Bitti")
         .catch(console.error);
     }
 
@@ -43,10 +43,9 @@ module.exports = {
         }
       })
       .on("error", console.error);
-    dispatcher.setVolumeLogarithmic(queue.volume / 100); //VOLUME
-
+    dispatcher.setVolumeLogarithmic(queue.volume / 100); 
     
-       queue.textChannel.send(`**MÜZİK ÇALIYOR** - [${song.title}] (<@${message.author.id}> Tarafından)`)
+       queue.textChannel.send(`**MÜZİK ÇALIYOR** - [${song.title}] (<@${message.author.id}> Tarafından Açıldı!)`)
     
   }
 }
