@@ -1,104 +1,106 @@
-const { Util } = require("discord.js");
+const { play } = require("../include/play");
 const { YOUTUBE_API_KEY } = require("../config.json");
 const ytdl = require("ytdl-core");
-const YoutubeAPI = require("simple-youtube-api");
-const youtube = new YoutubeAPI(YOUTUBE_API_KEY);
-const { play } = require("../system/music.js") 
+const YouTubeAPI = require("simple-youtube-api");
+const youtube = new YouTubeAPI(YOUTUBE_API_KEY);
+
 module.exports = {
-  name: "bul",
-  description: "Müzik OYNAYIN",
-  async execute(client, message, args) {
-  
-    if (!args.length) {
-    
-      return message.channel.send("HATA: Bir Söz Veya URL giriniz.`");
-    }
-
+  name: "play",
+  description: "Plays audio from YouTube",
+  async execute(message, args) {
     const { channel } = message.member.voice;
-    if (!channel) {
-   
-      return message.channel.send("SES KANALINDA OLMALISINIZ: /");
-    }
 
-   
+    if (!args.length)
+      return message
+        .reply(`Kullanma Şekli ${message.client.prefix}play <Video Linki | Video İsmi>`)
+        .catch(console.error);
+    if (!channel) return message.channel.send("Öncelikle Bir Sesli Kanala Katılmanız Gerekiyor!").catch(console.error);
 
-    const targetsong = args.join(" ");
+    const permissions = channel.permissionsFor(message.client.user);
+    if (!permissions.has("CONNECT"))
+      return message.channel.send("Odaya Katılmam İçin İzin Gerekiyor!");
+    if (!permissions.has("SPEAK"))
+      return message.channel.send("Odaya Katıldım Fakat Mikrofonum Kapalı Veya Konuşma İznim Yok!");
+
+    const search = args.join(" ");
     const videoPattern = /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.?be)\/.+$/gi;
-    const playlistPattern = /^.*(youtu.be\/|list=)([^#\&\?]*).*/gi;
-    const urlcheck = videoPattern.test(args[0]);
+    const playlistPattern = /^.*(list=)([^#\&\?]*).*/gi;
+    const url = args[0];
+    const urlValid = videoPattern.test(args[0]);
 
+    // Start the playlist if playlist url was provided
     if (!videoPattern.test(args[0]) && playlistPattern.test(args[0])) {
-      return message.channel.send("OYNATMA LİSTESİ OYNANAMIYOR");
+      return message.client.commands.get("playlist").execute(message, args);
     }
 
     const serverQueue = message.client.queue.get(message.guild.id);
-
     const queueConstruct = {
       textChannel: message.channel,
       channel,
       connection: null,
       songs: [],
       loop: false,
-      volume: 100,
+      volume: 50,
       playing: true
     };
 
-    let songData = null;
+    let songInfo = null;
     let song = null;
 
-    if (urlcheck) {
+    if (urlValid) {
       try {
-        songData = await ytdl.getInfo(args[0]);
+        songInfo = await ytdl.getInfo(url);
         song = {
-          title: songData.title,
-          url: songData.video_url,
-          duration: songData.length_seconds
+          title: songInfo.title,
+          url: songInfo.video_url,
+          duration: songInfo.length_seconds
         };
       } catch (error) {
-        if (message.include === "copyright") {
+        if (error.message.includes("copyright")) {
           return message
-            .reply("VİDEO'DA TELİF HAKKI İÇERİĞİ VAR -_-")
+            .channel.send("⛔ Video Telif Hakkı Olduğu İçin Açamadım ⛔")
             .catch(console.error);
         } else {
           console.error(error);
+          return message.channel.send(error.message).catch(console.error);
         }
       }
     } else {
       try {
-        const result = await youtube.searchVideos(targetsong, 1)
-        songData = await ytdl.getInfo(result[0].url)
-         song = {
-          title: songData.title,
-          url: songData.video_url,
-          duration: songData.length_seconds
+        const results = await youtube.searchVideos(search, 1);
+        songInfo = await ytdl.getInfo(results[0].url);
+        song = {
+          title: songInfo.title,
+          url: songInfo.video_url,
+          duration: songInfo.length_seconds
         };
       } catch (error) {
-        console.error(error)
+        console.error(error);
+        return message.channel.send("Aradım Fakat Bir Sonuç Çıkmadı").catch(console.error);
       }
     }
-    
-    if(serverQueue) {
-      serverQueue.songs.push(song)
-      return serverQueue.textChannel.send(`\`${song.title}\`, Sıraya Eklendi`)
-      .catch(console.error)
+
+    if (serverQueue) {
+      serverQueue.songs.push(song);
+      return serverQueue.textChannel
+        .send(`✅ **${song.title}** Şarkıyı ${message.author} Tarafından Kuyruğa Eklendi.`)
+        .catch(console.error);
     } else {
       queueConstruct.songs.push(song);
     }
-    
-    if(!serverQueue) message.client.queue.set(message.guild.id, queueConstruct)
-    
-     if (!serverQueue) {
+
+    if (!serverQueue) message.client.queue.set(message.guild.id, queueConstruct);
+
+    if (!serverQueue) {
       try {
         queueConstruct.connection = await channel.join();
         play(queueConstruct.songs[0], message);
       } catch (error) {
-        console.error(`Ses Kanalına Katılamadı: ${error}`);
+        console.error(`Could not join voice channel: ${error}`);
         message.client.queue.delete(message.guild.id);
         await channel.leave();
-        return message.channel.send({embed: {"description": `😭 | Kanala katılamadı: ${error}`, "color": "#ff2050"}}).catch(console.error);
+        return message.channel.send(`Could not join the channel: ${error}`).catch(console.error);
       }
     }
-    
-    
   }
 };
