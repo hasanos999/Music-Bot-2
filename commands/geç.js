@@ -1,21 +1,15 @@
 module.exports = {
-  name: "geç",
-  description: "Şarkıyı atlayın veya şarkıyı bir sonrakine kaydırın",
-  execute(client, message, args) {
-    const { channel } = message.member.voice;
-
-    if (!channel) {
-      
-      return message.channel.send("SES KANALINDA OLMALISINIZ: /");
-    }
-
+  name: "skip",
+  description: "Skip the currently playing song",
+  async execute(message) {
     const serverQueue = message.client.queue.get(message.guild.id);
 
-    if (!serverQueue) {
-      return message.channel.send("Atlayabileceğim hiçbir şey çalmıyor");
-    }
+    if (!message.member.voice.channel)
+      return message.channel.send("Öncelikle Bir Ses Kanalına Katılmanız Gerekiyor!").catch(console.error);
+    if (!serverQueue)
+      return message.channel.send("Oynatılan Şarkıyı Bulamadım Lütfen Şarkı Açın Yoksa Geçemem.").catch(console.error);
 
     serverQueue.connection.dispatcher.end();
-    message.channel.send("✔ | Şarkıyı Atladınız.");
+    serverQueue.textChannel.send(`${message.author} ⏭ Dinlediğiniz Şarkıyı Geçtim`).catch(console.error);
   }
 };
