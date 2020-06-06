@@ -1,21 +1,14 @@
 module.exports = {
-  name: "geç",
-  description: "Şarkıyı atlayın veya şarkıyı bir sonrakine kaydırın",
-  execute(client, message, args) {
-    const { channel } = message.member.voice;
-
-    if (!channel) {
-  
-      return message.channel.send("SES KANALINDA OLMALISINIZ: /");
-    }
-
+  name: "loop", 
+  description: "Toggle music loop",
+  async execute(message) {
     const serverQueue = message.client.queue.get(message.guild.id);
+    if (!serverQueue) return message.channel.send({embed: {"description": `  **Oynatılan Şarkıyı Bulamadım Lütfen Şarkı Açın.**  <a:b_yes:714437257385213994>  [${message.author}]"`, "color": "#ff2050"}}).catch(console.error);
 
-    if (!serverQueue) {
-      return message.channel.send("Atlayabileceğim hiçbir şey çalmıyor");
-    }
-
-    serverQueue.connection.dispatcher.end();
-    message.channel.send("✔ | Şarkıyı Atladınız.");
+    // toggle from false to true and reverse
+    serverQueue.loop = !serverQueue.loop;
+    return serverQueue.textChannel
+      .send({embed: {"description": `  **Döngü Sistemi ${serverQueue.loop ? "**Döngü Açıldı**" : "**Döngü Kapatıldı**"}**  <a:b_yes:714437257385213994>  [${message.author}]"`, "color": "#ff2050"}})
+      .catch(console.error);
   }
 };
