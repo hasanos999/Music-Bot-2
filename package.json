@@ -2,7 +2,7 @@
   "name": "evobot",
   "version": "0.4.0",
   "description": "Discord music bot built with discord.js",
-  "main": "shard.js",
+  "main": "r3lease.js",
   "author": "@R3LEASE | Oyun Craft#7587 ",
   "private": true,
   "dependencies": {
@@ -11,9 +11,11 @@
     "simple-youtube-api": "^5.1.1",
     "ytdl-core": "^2.0.0",
     "ytdl-core-discord": "amishshah/ytdl-core-discord",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "lyrics-finder": "^21.0.3",
+    "soundcloud-downloader": "^0.1.1"
   },
   "scripts": {
-    "start": "node shard.js"
+    "start": "node r3lease.js"
   }
 }
