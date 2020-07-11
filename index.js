@@ -1,6 +1,4 @@
-/**
- * Module Imports
- */
+
 const { Client, Collection } = require("discord.js");
 const { readdirSync } = require("fs");
 const { join } = require("path");
@@ -14,9 +12,6 @@ client.prefix = PREFIX;
 client.queue = new Map();
 const cooldowns = new Collection();
 
-/**
- * Client Events
- */
 client.on("ready", () => {
   console.log(`${client.user.username} ready!`);
   client.user.setActivity(`${PREFIX}help`);
@@ -24,9 +19,6 @@ client.on("ready", () => {
 client.on("warn", (info) => console.log(info));
 client.on("error", console.error);
 
-/**
- * Import all commands
- */
 const commandFiles = readdirSync(join(__dirname, "commands")).filter((file) => file.endsWith(".js"));
 for (const file of commandFiles) {
   const command = require(join(__dirname, "commands", `${file}`));

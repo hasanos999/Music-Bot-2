@@ -1,13 +1,10 @@
 {
-  "name": "evobot",
+  "name": "R3LEASE",
   "version": "0.6.2",
   "description": "Discord music bot built with discord.js",
   "main": "index.js",
-  "author": "Erit Islami <eritislami@gmail.com>",
+  "author": "EmreBursaPro/Oyun Craft#4660",
   "private": true,
-  "homepage": "https://github.com/eritislami/evobot",
-  "repository": "github:eritislami/evobot",
-  "bugs": "https://github.com/eritislami/evobot/issues",
   "engines": {
     "node": ">=12.0.0"
   },
