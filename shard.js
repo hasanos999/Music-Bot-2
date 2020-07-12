@@ -1,8 +1,8 @@
 const { ShardingManager } = require(`discord.js`)
-const ayarlar = require(`./config.json`)
+const config = require(`./config.json`)
 
-const shards = new ShardingManager(`./index.js`, {
-token : ayarlar.token,
+const shards = new ShardingManager(`./server.js`, {
+token : config.token,
 totalShards : 2 })
 
 shards.spawn()
