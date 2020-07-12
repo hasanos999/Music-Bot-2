@@ -3,10 +3,9 @@
   "version": "0.6.2",
   "description": "Discord music bot built with discord.js",
   "main": "index.js",
-  "author": "EmreBursaPro/Oyun Craft#4660",
   "private": true,
   "engines": {
-    "node": "12.0.0"
+    "node": ">=12.0.0"
   },
   "dependencies": {
     "@discordjs/opus": "^0.3.2",
