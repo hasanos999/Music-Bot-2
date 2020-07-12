@@ -1,9 +1,8 @@
 dependencies:
   '@discordjs/opus': 0.3.2
   discord.js: 12.2.0
-  ffmpeg-static: 4.2.5
   simple-youtube-api: 5.2.1
-  soundcloud-downloader: 0.0.9
+  soundcloud-downloader: 0.1.1
   ytdl-core: 3.1.2
   ytdl-core-discord: 1.2.1
 packages:
@@ -51,10 +50,6 @@ packages:
     requiresBuild: true
     resolution:
       integrity: sha512-T/ubykd4Xi19vDfw7/Oe+iTQBJ28yMI2PQAzK+Zue0PB9OpEYaeIXU7k5255061RwL+rHX9w7P/P2of+x2Vu2A==
-  /@types/node/10.17.27:
-    dev: false
-    resolution:
-      integrity: sha512-J0oqm9ZfAXaPdwNXMMgAhylw5fhmXkToJd06vuDUSAgEDZ/n/69/69UmyBZbc+zT34UnShuDSBqvim3SPnozJg==
   /@types/node/14.0.22:
     dev: false
     resolution:
@@ -71,14 +66,6 @@ packages:
       node: '>=6.5'
     resolution:
       integrity: sha512-h8lQ8tacZYnR3vNQTgibj+tODHI5/+l06Au2Pcriv/Gmet0eaj4TwWH41sO9wnHDiQsEj19q0drzdWdeAHtweg==
-  /agent-base/6.0.1:
-    dependencies:
-      debug: 4.1.1
-    dev: false
-    engines:
-      node: '>= 6.0.0'
-    resolution:
-      integrity: sha512-01q25QQDwLSsyfhrKbn8yuur+JNw0H+0Y4JiGIKd3z9aYk/w/2kxD/Upc+t2ZBBSUNff50VjPsSW2YxM8QYKVg==
   /ansi-regex/2.1.1:
     dev: false
     engines:
@@ -123,14 +110,6 @@ packages:
     dev: false
     resolution:
       integrity: sha512-iCuPHDFgrHX7H2vEI/5xpz07zSHB00TpugqhmYtVmMO6518mCuRMoOYFldEBl0g187ufozdaHgWKcYFb61qGiA==
-  /buffer-from/1.1.1:
-    dev: false
-    resolution:
-      integrity: sha512-MQcXEUbCKtEo7bhqEs6560Hyd4XaovZlO/k9V3hjVUF/zwW7KBVdSK4gIt/bzwS9MbR5qob+F5jusZsb0YQK2A==
-  /caseless/0.12.0:
-    dev: false
-    resolution:
-      integrity: sha1-G2gcIf+EAzyCZUMJBolCDRhxUdw=
   /chownr/2.0.0:
     dev: false
     engines:
@@ -155,17 +134,6 @@ packages:
     dev: false
     resolution:
       integrity: sha1-2Klr13/Wjfd5OnMDajug1UBdR3s=
-  /concat-stream/1.6.2:
-    dependencies:
-      buffer-from: 1.1.1
-      inherits: 2.0.4
-      readable-stream: 2.3.7
-      typedarray: 0.0.6
-    dev: false
-    engines:
-      '0': node >= 0.8
-    resolution:
-      integrity: sha512-27HBghJxjiZtIk3Ycvn/4kbJk/1uZuJFfuPEns6LaEvpvG1f0hTea8lilrouyo9mVc2GWdcEZ8OLoGmSADlrCw==
   /console-control-strings/1.1.0:
     dev: false
     resolution:
@@ -186,12 +154,6 @@ packages:
     dev: false
     resolution:
       integrity: sha512-mel+jf7nrtEl5Pn1Qx46zARXKDpBbvzezse7p7LqINmdoIk8PYP5SySaxEmYv6TZ0JyEKA1hsCId6DIhgITtWQ==
-  /debug/4.1.1:
-    dependencies:
-      ms: 2.1.2
-    dev: false
-    resolution:
-      integrity: sha512-pYAIzeRo8J6KPEaJ0VWOh5Pzkbw/RetuzehGM7QRRX5he4fPHx2rdKMB256ehJCkX+XRQm16eZLqLNS8RSZXZw==
   /deep-extend/0.6.0:
     dev: false
     engines:
@@ -237,30 +199,18 @@ packages:
       zlib-sync: ^0.1.6
     resolution:
       integrity: sha512-Ueb/0SOsxXyqwvwFYFe0msMrGqH1OMqpp2Dpbplnlr4MzcRrFWwsBM9gKNZXPVBHWUKiQkwU8AihXBXIvTTSvg==
-  /env-paths/2.2.0:
+  /dotenv/8.2.0:
     dev: false
     engines:
-      node: '>=6'
+      node: '>=8'
     resolution:
-      integrity: sha512-6u0VYSCo/OW6IoD5WCLLy9JUGARbamfSavcNXry/eu8aHVFei6CD3Sw+VGX5alea1i9pgPHW0mbu6Xj0uBh7gA==
+      integrity: sha512-8sJ78ElpbDJBHNeBzUbUVLsqKdccaa/BXF1uPTw3GrvQTBgrQrtObr2mUrE38vzYd8cEv+m/JBfDLioYcfXoaw==
   /event-target-shim/5.0.1:
     dev: false
     engines:
       node: '>=6'
     resolution:
       integrity: sha512-i/2XbnSz/uxRCU6+NdVJgKWDTM427+MqYbkQzD321DuCQJUqOuJKIA0IM2+W2xtYHdKOmZ4dR6fExsd4SXL+WQ==
-  /ffmpeg-static/4.2.5:
-    dependencies:
-      env-paths: 2.2.0
-      http-basic: github.com/derhuerst/http-basic/482ee5c23cbd8e51965d8d7d9b30d0345cc3e82b
-      https-proxy-agent: 5.0.0
-      progress: 2.0.3
-    dev: false
-    engines:
-      node: '>=10'
-    requiresBuild: true
-    resolution:
-      integrity: sha512-4JykaxRgU5z/GfL0YLkBetJyXgaQXh67etMJlJMMTTcoA33voU6y/KFMg/RUehBj3DGDIs9HYhf7tozwabibaQ==
   /follow-redirects/1.5.10:
     dependencies:
       debug: 3.1.0
@@ -313,21 +263,6 @@ packages:
     dev: false
     resolution:
       integrity: sha512-rhE/4Z3hIhzHAUKbW8jVcCyuT5oJCXXqhN/6mXXVCpzTmvJnoH2HL/bt3EZ6p55jbFJBeAe1ZNpL5BugLujxNA==
-  /http-response-object/3.0.2:
-    dependencies:
-      '@types/node': 10.17.27
-    dev: false
-    resolution:
-      integrity: sha512-bqX0XTF6fnXSQcEJ2Iuyr75yVakyjIDCqroJQ/aHfSdlM743Cwqoi2nDYMzLGWUcuTWGWy8AAvOKXTfiv6q9RA==
-  /https-proxy-agent/5.0.0:
-    dependencies:
-      agent-base: 6.0.1
-      debug: 4.1.1
-    dev: false
-    engines:
-      node: '>= 6'
-    resolution:
-      integrity: sha512-EkYm5BcKUGiduxzSt3Eppko+PiNWNEpa4ySk9vTC6wDsQJW9rHSa+UhGNJoRYp7bz6Ht1eaRIa6QaJqO5rCFbA==
   /iconv-lite/0.4.24:
     dependencies:
       safer-buffer: 2.1.2
@@ -556,10 +491,6 @@ packages:
     dev: false
     resolution:
       integrity: sha512-0CWcCECdMVc2Rw3U5w9ZjqX6ga6ubk1xDVKxtBQPK7wis/0F2r9T6k4ydGYhecl7YUBxBVxhL5oisPsNxAPe2g==
-  /parse-cache-control/1.0.1:
-    dev: false
-    resolution:
-      integrity: sha1-juqz5U+laSD+Fro493+iGqzC104=
   /path-is-absolute/1.0.1:
     dev: false
     engines:
@@ -579,12 +510,6 @@ packages:
     dev: false
     resolution:
       integrity: sha512-3ouUOpQhtgrbOa17J7+uxOTpITYWaGP7/AhoR3+A+/1e9skrzelGi/dXzEYyvbxubEF6Wn2ypscTKiKJFFn1ag==
-  /progress/2.0.3:
-    dev: false
-    engines:
-      node: '>=0.4.0'
-    resolution:
-      integrity: sha512-7PiHtLll5LdnKIMw100I+8xJXR5gW2QwWYkT6iJva0bXitZKa/XMrSbdmg3r2Xnaidz9Qumd0VPaMrZlF9V9sA==
   /rc/1.2.8:
     dependencies:
       deep-extend: 0.6.0
@@ -656,14 +581,15 @@ packages:
     dev: false
     resolution:
       integrity: sha512-vmndP9Bkh35tifn2OwY+th2imSsfYtmDqczgdOW5yEARFzvSoR8VSQFsivJnctfV5QHQUL6VrOpNdbmDRLh9Bg==
-  /soundcloud-downloader/0.0.9:
+  /soundcloud-downloader/0.1.1:
     dependencies:
       '@babel/runtime': 7.10.4
       axios: 0.19.2
+      dotenv: 8.2.0
       m3u8stream: 0.7.1
     dev: false
     resolution:
-      integrity: sha512-46AbflAJPUngXcpv9n0/ISr0ZE0z1iLiVN3b2QDtEKXGyvWeERJeh9L6/78FS1TF8sVgNOeaozkcspd4C2brQQ==
+      integrity: sha512-oGinAQcTMJxdyNiyRi2XIG2Ldkm3vFkxKKP6kzhmbylFat27uQfTt7vpt1f1Hj1zx1bcKttU4WnlRTxvKE2ytQ==
   /string-width/1.0.2:
     dependencies:
       code-point-at: 1.1.0
@@ -728,10 +654,6 @@ packages:
     dev: false
     resolution:
       integrity: sha512-6rt+RN7aOi1nGMyC4Xa5DdYiukl2UWCbcJft7YhxReBGQD7OAM8Pbxw6YMo4r2diNEA8FEmu32YOn9rhaiE5yw==
-  /typedarray/0.0.6:
-    dev: false
-    resolution:
-      integrity: sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=
   /util-deprecate/1.0.2:
     dev: false
     resolution:
@@ -789,28 +711,13 @@ packages:
       node: '>=10'
     resolution:
       integrity: sha512-H2ja9W9j89TTf+LMQxo1VrdpUNCcjjHnwY6M4NmvgUaQLwNZnIoBwbch4iaT8q75trUK83PzmbihkUBd5Poyfg==
-  github.com/derhuerst/http-basic/482ee5c23cbd8e51965d8d7d9b30d0345cc3e82b:
-    dependencies:
-      caseless: 0.12.0
-      concat-stream: 1.6.2
-      http-response-object: 3.0.2
-      parse-cache-control: 1.0.1
-    dev: false
-    engines:
-      node: '>=6.0.0'
-    name: http-basic
-    resolution:
-      registry: 'https://registry.npmjs.org/'
-      tarball: 'https://codeload.github.com/derhuerst/http-basic/tar.gz/482ee5c23cbd8e51965d8d7d9b30d0345cc3e82b'
-    version: 8.2.0
 registry: 'https://registry.npmjs.org/'
 shrinkwrapMinorVersion: 9
 shrinkwrapVersion: 3
 specifiers:
   '@discordjs/opus': ^0.3.2
   discord.js: ^12.0.1
-  ffmpeg-static: ^4.2.3
   simple-youtube-api: ^5.1.1
-  soundcloud-downloader: 0.0.9
+  soundcloud-downloader: ^0.1.1
   ytdl-core: ^3.1.0
   ytdl-core-discord: ^1.2.1

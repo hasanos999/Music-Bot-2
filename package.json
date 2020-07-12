@@ -1,20 +1,15 @@
 {
-  "name": "R3LEASE",
-  "version": "0.6.2",
-  "description": "Discord music bot built with discord.js",
   "main": "shard.js",
-  "private": true,
   "engines": {
     "node": ">=12.0.0"
   },
   "dependencies": {
     "@discordjs/opus": "^0.3.2",
     "discord.js": "^12.0.1",
-    "ffmpeg-static": "^4.2.3",
     "simple-youtube-api": "^5.1.1",
-    "soundcloud-downloader": "0.0.9",
     "ytdl-core": "^3.1.0",
-    "ytdl-core-discord": "^1.2.1"
+    "ytdl-core-discord": "^1.2.1",
+    "soundcloud-downloader": "^0.1.1"
   },
   "scripts": {
     "start": "node shard.js"

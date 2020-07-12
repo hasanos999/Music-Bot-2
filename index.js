@@ -13,8 +13,7 @@ client.queue = new Map();
 const cooldowns = new Collection();
 
 client.on("ready", () => {
-  console.log(`${client.user.username} ready!`);
-  client.user.setActivity(`${PREFIX}help`);
+ console.log(`${client.user.username} Bot Aktif!`);
 });
 client.on("warn", (info) => console.log(info));
 client.on("error", console.error);
