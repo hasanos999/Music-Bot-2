@@ -42,13 +42,10 @@ module.exports = {
         if (collector && !collector.ended) collector.stop();
 
         if (queue.loop) {
-          // if loop is on, push the song back at the end of the queue
-          // so it can repeat endlessly
           let lastSong = queue.songs.shift();
           queue.songs.push(lastSong);
           module.exports.play(queue.songs[0], message);
         } else {
-          // Recursively play the next song
           queue.songs.shift();
           module.exports.play(queue.songs[0], message);
         }
@@ -58,10 +55,11 @@ module.exports = {
         queue.songs.shift();
         module.exports.play(queue.songs[0], message);
       });
-    dispatcher.setVolumeLogarithmic(queue.volume / 100);
+        dispatcher.setVolumeLogarithmic(queue.volume / 75);
+    const serverQueue = message.client.queue.get(message.guild.id);
 
     try {
-      var playingMessage = await queue.textChannel.send(`🎶 Started playing: **${song.title}** ${song.url}`);
+      var playingMessage = await queue.textChannel.send({embed: {"description": `**R3LEASE | 🎧 Müzik Başladı 🎧 \nBaşlık\n [${song.title}](${song.url}) \n Sarkıyı Açan \n ${message.author}\nSes Seviyesi \n${serverQueue.volume}%**`, "color": "BLUE"}});
       await playingMessage.react("⏭");
       await playingMessage.react("⏯");
       await playingMessage.react("🔁");
@@ -85,7 +83,7 @@ module.exports = {
           reaction.users.remove(user).catch(console.error);
           if (!canModifyQueue(member)) return;
           queue.connection.dispatcher.end();
-          queue.textChannel.send(`${user} ⏩ skipped the song`).catch(console.error);
+          queue.textChannel.send(`${user} ⏩ Dinledğiniz Şarkıyı Geçtim`).catch(console.error);
           collector.stop();
           break;
 
@@ -95,11 +93,11 @@ module.exports = {
           if (queue.playing) {
             queue.playing = !queue.playing;
             queue.connection.dispatcher.pause(true);
-            queue.textChannel.send(`${user} ⏸ paused the music.`).catch(console.error);
+            queue.textChannel.send(`${user} ⏸ Dinledğiniz Şarkıyı Duraklattım.`).catch(console.error);
           } else {
             queue.playing = !queue.playing;
             queue.connection.dispatcher.resume();
-            queue.textChannel.send(`${user} ▶ resumed the music!`).catch(console.error);
+            queue.textChannel.send(`${user} ▶ Duraklattığınız Şarkıyı Açtım!`).catch(console.error);
           }
           break;
 
@@ -107,14 +105,14 @@ module.exports = {
           reaction.users.remove(user).catch(console.error);
           if (!canModifyQueue(member)) return;
           queue.loop = !queue.loop;
-          queue.textChannel.send(`Loop is now ${queue.loop ? "**on**" : "**off**"}`).catch(console.error);
+          queue.textChannel.send(`Döngü Sistemi ${queue.loop ? "**A**" : "**off**"}`).catch(console.error);
           break;
 
         case "⏹":
           reaction.users.remove(user).catch(console.error);
           if (!canModifyQueue(member)) return;
           queue.songs = [];
-          queue.textChannel.send(`${user} ⏹ stopped the music!`).catch(console.error);
+          queue.textChannel.send(`${user} ⏹ Dinledğiniz Şarkıyı Kapattım!`).catch(console.error);
           try {
             queue.connection.dispatcher.end();
           } catch (error) {
