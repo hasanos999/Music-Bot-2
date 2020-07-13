@@ -2,7 +2,7 @@ const { MessageEmbed, splitMessage, escapeMarkdown } = require("discord.js");
 
 module.exports = {
   name: "queue",
-  aliases: ["q"],
+  aliases: ["q",'kuyruk','liste'],
   description: "Show the music queue and now playing.",
   execute(message) {
     const queue = message.client.queue.get(message.guild.id);
@@ -11,7 +11,7 @@ module.exports = {
     const description = queue.songs.map((song, index) => `${index + 1}. ${escapeMarkdown(song.title)}`);
 
     let queueEmbed = new MessageEmbed()
-      .setTitle("R3LEASE Müzik Geç")
+      .setTitle("R3LEASE Müzik Listesi")
       .setDescription(description)
       .setColor("BLUE");
 

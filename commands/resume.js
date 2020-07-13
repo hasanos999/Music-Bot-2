@@ -2,7 +2,7 @@ const { canModifyQueue } = require("../util/EvobotUtil");
 
 module.exports = {
   name: "resume",
-  aliases: ["r"],
+  aliases: ["r",'devam-et','devam','devamet'],
   description: "Resume currently playing music",
   execute(message) {
     const queue = message.client.queue.get(message.guild.id);
