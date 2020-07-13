@@ -9,7 +9,7 @@ module.exports = {
 
     if (!queue) return message.channel.send({embed: {"description": `**${message.author} Oynatılan Bir Şarkı Bulamadım.**`, "color": "BLUE"}}); 
     if (!canModifyQueue(message.member))
-      return message.reply("You need to join a voice channel first!").catch(console.error);
+      return message.channel.send({embed: {"description": `**Öncelikle Bir Sesli Kanala Katılmanız Gerekiyor.**`, "color": "BLUE"}}); 
 
     if (!args[0]) return message.reply(`🔊 The current volume is: **${queue.volume}%**`).catch(console.error);
     if (isNaN(args[0])) return message.reply("Please use a number to set volume.").catch(console.error);

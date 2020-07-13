@@ -14,7 +14,7 @@ module.exports = {
     const { channel } = message.member.voice;
 
     const serverQueue = message.client.queue.get(message.guild.id);
-    if (!channel) return message.reply("Öncelikle Bir Sesli Kanala Katılmanız Gerekiyor.").catch(console.error);
+    if (!channel) return message.channel.send({embed: {"description": `**Öncelikle Bir Sesli Kanala Katılmanız Gerekiyor.**`, "color": "BLUE"}}); 
     if (serverQueue && channel !== message.guild.me.voice.channel)
       return message.reply(`You must be in the same channel as ${message.client.user}`).catch(console.error);
 
@@ -22,7 +22,7 @@ module.exports = {
       return message.channel.send({embed: {"description": `**Kullanım Şekli: ${message.client.prefix}play <Video Link  | Video İsmi | Soundcloud Linki>.**`, "color": "BLUE"}}); 
     const permissions = channel.permissionsFor(message.client.user);
     if (!permissions.has("CONNECT"))
-      return message.reply("Odaya Katılmıyorum İzinim Yok Lütfen İzinleri Değiştirin.");
+      return message.channel.send({embed: {"description": `**Odaya Katılmıyorum İzinim Yok Lütfen İzinleri Değiştirin.**`, "color": "BLUE"}}); 
     if (!permissions.has("SPEAK"))
       return message.reply("Odaya Katıldım Fakat Konuşma İznim Yok Lütfen İzinleri Değiştirin.");
 

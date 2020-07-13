@@ -18,14 +18,12 @@ module.exports = {
       return message.reply(`You must be in the same channel as ${message.client.user}`).catch(console.error);
 
     if (!args.length)
-      return message
-        .reply(`Usage: ${message.client.prefix}playlist <YouTube Playlist URL | Playlist Name>`)
-        .catch(console.error);
-    if (!channel) return message.reply("You need to join a voice channel first!").catch(console.error);
+      return message.channel.send({embed: {"description": `**Kullanım Şekli: ${message.client.prefix}playlist <Youtube Playlist | Playlist İsmi | Soundcloud Playlist>.**`, "color": "BLUE"}}); 
+    if (!channel) return message.channel.send({embed: {"description": `**Öncelikle Bir Sesli Kanala Katılmanız Gerekiyor.**`, "color": "BLUE"}}); 
 
     const permissions = channel.permissionsFor(message.client.user);
     if (!permissions.has("CONNECT"))
-      return message.reply("Cannot connect to voice channel, missing permissions");
+      return message.channel.send({embed: {"description": `**Odaya Katılmıyorum İzinim Yok Lütfen İzinleri Değiştirin.**`, "color": "BLUE"}}); 
     if (!permissions.has("SPEAK"))
       return message.reply("I cannot speak in this voice channel, make sure I have the proper permissions!");
 
