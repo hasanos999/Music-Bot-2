@@ -5,7 +5,11 @@ const { join } = require("path");
 const { TOKEN, PREFIX } = require("./config.json");
 
 const client = new Client({ disableMentions: "everyone" });
+const express = require('express')
+const app = express()
 
+app.get('/', (req, res) => res.send('R3LEASE Bot | Aktif!')) // sitenize girdiğinde görebilirsiniz.
+app.listen(process.env.PORT, () => console.log('Port ayarlandı: ' + process.env.PORT))
 client.login(TOKEN);
 client.commands = new Collection();
 client.prefix = PREFIX;
