@@ -10,7 +10,8 @@
     "ytdl-core": "^3.1.0",
     "ytdl-core-discord": "^1.2.1",
     "soundcloud-downloader": "^0.1.1",
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "lyrics-finder": "^21.0.3"
   },
   "engines": {
     "node": ">=12.0.0"
