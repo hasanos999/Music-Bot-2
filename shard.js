@@ -1,7 +1,7 @@
 const Discord = require('discord.js');
 const shard = new Discord.ShardingManager('./server.js', { 
     totalShards: 2, 
-    token: 'NjUzOTU3Mzg1MTIzMjY2NTYw.XxM_6g.3Y6RwZsCkkKeS_gOYZ3p7f3h1KU' 
+    token: 'NjUzOTU3Mzg1MTIzMjY2NTYw.XxSDlA.BrmG_H4sSDtOBeCzR8qPoN_yFjk' 
 });
 
 shard.spawn(); 

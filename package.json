@@ -1,7 +1,7 @@
 {
-  "main": "server.js",
+  "main": "shard.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node shard.js"
   },
   "dependencies": {
     "@discordjs/opus": "^0.3.2",
