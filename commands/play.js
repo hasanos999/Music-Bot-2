@@ -1,7 +1,9 @@
 const { play } = require("../include/play");
+const { YOUTUBE_API_KEY, SOUNDCLOUD_CLIENT_ID } = require("../config.json");
 const ytdl = require("ytdl-core");
 const YouTubeAPI = require("simple-youtube-api");
 const youtube = new YouTubeAPI(YOUTUBE_API_KEY);
+const scdl = require("soundcloud-downloader");
 
 module.exports = {
   name: "play",
@@ -62,20 +64,20 @@ module.exports = {
       }
     } else if (scRegex.test(url)) {
    
-    //  if (!SOUNDCLOUD_CLIENT_ID)
-    //    return message.reply("Missing Soundcloud Client ID in config").catch(console.error);
-     // try {
-    //    const trackInfo = await scdl.getInfo(url, SOUNDCLOUD_CLIENT_ID);
-      //  song = {
-    //      title: trackInfo.title,
-    //      url: url
-    //    };
-  //    } catch (error) {
-   //     if (error.statusCode === 404)
-    //      return message.reply("Could not find that Soundcloud track.").catch(console.error);
-   //     return message.reply("There was an error playing that Soundcloud track.").catch(console.error);
-   //   }
-   // } else {
+      if (!SOUNDCLOUD_CLIENT_ID)
+        return message.reply("Missing Soundcloud Client ID in config").catch(console.error);
+      try {
+        const trackInfo = await scdl.getInfo(url, SOUNDCLOUD_CLIENT_ID);
+        song = {
+          title: trackInfo.title,
+          url: url
+        };
+      } catch (error) {
+        if (error.statusCode === 404)
+          return message.reply("Could not find that Soundcloud track.").catch(console.error);
+        return message.reply("There was an error playing that Soundcloud track.").catch(console.error);
+      }
+    } else {
       try {
         const results = await youtube.searchVideos(search, 1);
         songInfo = await ytdl.getInfo(results[0].url);
