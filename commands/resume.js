@@ -18,4 +18,3 @@ module.exports = {
     return message.channel.send({embed: {"description": `**${message.author} Duraklattılan Şarkı Bulunamadı.**`, "color": "BLUE"}}); 
   }
 };
-//Oyun Craft Abone Ol R3lease Kalp

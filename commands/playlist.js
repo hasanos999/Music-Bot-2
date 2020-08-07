@@ -49,19 +49,19 @@ module.exports = {
     if (urlValid) {
       try {
         playlist = await youtube.getPlaylist(url, { part: "snippet" });
-        videos = await playlist.getVideos(MAX_PLAYLIST_SIZE || 10, { part: "snippet" });
+        videos = await playlist.getVideos(MAX_PLAYLIST_SIZE || 50, { part: "snippet" });
       } catch (error) {
         console.error(error);
-        return message.reply("**Play Listi:(").catch(console.error);
+        return message.reply("PlayList'i Bulamadım :(").catch(console.error);
       }
     } else {
       try {
         const results = await youtube.searchPlaylists(search, 1, { part: "snippet" });
         playlist = results[0];
-        videos = await playlist.getVideos(MAX_PLAYLIST_SIZE || 10, { part: "snippet" });
+        videos = await playlist.getVideos(MAX_PLAYLIST_SIZE || 50, { part: "snippet" });
       } catch (error) {
         console.error(error);
-        return message.reply("Playlist not found :(").catch(console.error);
+        return message.reply("PlayList'i Bulamadım :(").catch(console.error);
       }
     }
 
@@ -93,10 +93,10 @@ module.exports = {
       playlistEmbed.setDescription(queueConstruct.songs.map((song, index) => `${index + 1}. ${song.title}`));
       if (playlistEmbed.description.length >= 2048)
         playlistEmbed.description =
-          playlistEmbed.description.substr(0, 2007) + "\nPlaylist larger than character limit...";
+          playlistEmbed.description.substr(0, 2007) + "\n**PlayList'in Adı Çok Uzun**...";
     }
 
-    message.channel.send(`${message.author} Started a playlist`, playlistEmbed);
+    message.channel.send(`${message.author} **PlayList Başlatılıyor**`, playlistEmbed);
 
     if (!serverQueue) message.client.queue.set(message.guild.id, queueConstruct);
 
@@ -109,9 +109,8 @@ module.exports = {
         console.error(error);
         message.client.queue.delete(message.guild.id);
         await channel.leave();
-        return message.channel.send(`Could not join the channel: ${error}`).catch(console.error);
+        return message.channel.send(`**Kanala Katılamadım**: ${error}`).catch(console.error);
       }
     }
   }
 };
-//Oyun Craft Abone Ol R3lease Kalp

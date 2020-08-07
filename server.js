@@ -7,7 +7,7 @@ const client = new Client({ disableMentions: "everyone" });
 const express = require('express')
 const app = express()
 
-app.get('/', (req, res) => res.send('R3LEASE Bot | Aktif!')) // sitenize girdiğinde görebilirsiniz.
+app.get('/', (req, res) => res.send(' Bot | Aktif!')) // sitenize girdiğinde görebilirsiniz.
 app.listen(process.env.PORT, () => console.log('Port ayarlandı: ' + process.env.PORT))
 client.login(TOKEN);
 client.commands = new Collection();
@@ -71,4 +71,3 @@ client.on("message", async (message) => {
     }
   }
 });
-//Oyun Craft Abone Ol R3lease Kalp

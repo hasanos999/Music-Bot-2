@@ -16,4 +16,3 @@ module.exports = {
     queue.textChannel.send({embed: {"description": `**${message.author} ⏹ Dinledğiniz Şarkıyı Kapattım.**`, "color": "BLUE"}}); 
   }
 };
-//Oyun Craft Abone Ol R3lease Kalp

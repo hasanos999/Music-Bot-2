@@ -22,4 +22,3 @@ module.exports = {
     return queue.textChannel.send({embed: {"description": `**Ses Şiddeti **${args[0]}%**.**`, "color": "BLUE"}}); 
   }
 };
-//Oyun Craft Abone Ol R3lease Kalp

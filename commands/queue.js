@@ -11,7 +11,7 @@ module.exports = {
     const description = queue.songs.map((song, index) => `${index + 1}. ${escapeMarkdown(song.title)}`);
 
     let queueEmbed = new MessageEmbed()
-      .setTitle("R3LEASE Müzik Listesi")
+      .setTitle("Müzik Listesi")
       .setDescription(description)
       .setColor("BLUE");
 
@@ -28,4 +28,3 @@ module.exports = {
     });
   }
 };
-//Oyun Craft Abone Ol R3lease Kalp

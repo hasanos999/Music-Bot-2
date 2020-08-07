@@ -13,7 +13,6 @@ module.exports = {
     if (isNaN(args[0])) return message.channel.send({embed: {"description": `**Kullanım Şekli: ${message.client.prefix}remove <Sıra Numarası>.**`, "color": "BLUE"}});
 
     const song = queue.songs.splice(args[0] - 1, 1);
-    queue.textChannel.send({embed: {"description": `**${message.author} ❌ Kaldırıldı **${song[0].title}** Kuyruktan.**`, "color": "BLUE"}}); 
+    queue.textChannel.send({embed: {"description": `**${message.author} **${song[0].title}** Adlı Şarkı Kuyruktan Kaldırıldı.**`, "color": "BLUE"}}); 
   }
 };
-//Oyun Craft Abone Ol R3lease Kalp
