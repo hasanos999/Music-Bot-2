@@ -59,7 +59,7 @@ module.exports = {
     const serverQueue = message.client.queue.get(message.guild.id);
 
     try {
-      var playingMessage = await queue.textChannel.send({embed: {"description": `**R3LEASE | 🎧 Müzik Başladı 🎧 \nBaşlık\n [${song.title}](${song.url}) \n Sarkıyı Açan \n ${message.author}\nSes Seviyesi \n${serverQueue.volume}%**`, "color": "BLUE"}});
+      var playingMessage = await queue.textChannel.send({embed: {"description": `**🎧 Müzik Başladı 🎧 \n\n [${song.title}](${song.url}) \n\n Sarkıyı Açan: \n ${message.author}\n\nSes Seviyesi: \n${serverQueue.volume}%**`, "color": "BLUE"}});
       await playingMessage.react("⏭");
       await playingMessage.react("⏯");
       await playingMessage.react("🔁");
@@ -136,4 +136,3 @@ module.exports = {
     });
   }
 };
-//Oyun Craft Abone Ol R3lease Kalp

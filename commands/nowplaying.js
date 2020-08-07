@@ -10,10 +10,10 @@ module.exports = {
     const song = queue.songs[0];
 
     let nowPlaying = new MessageEmbed()
-      .setTitle("Şu Anki Çalan")
-      .setDescription(`${song.title}\n${song.url}`)
+      .setTitle("**Şu Anki Çalan**")
+      .setDescription(`**${song.title}\n${song.url}**`)
       .setColor("BLUE")
-      .setAuthor("R3LEASE")
+      .setAuthor("Müzik")
       .setTimestamp();
 
     if (song.duration > 0) nowPlaying.setFooter(new Date(song.duration * 1000).toISOString().substr(11, 8));
@@ -21,5 +21,5 @@ module.exports = {
     return message.channel.send(nowPlaying);
   }
 };
-//Oyun Craft Abone Ol R3lease Kalp
+
 

@@ -18,14 +18,14 @@ module.exports = {
       return message.reply(`You must be in the same channel as ${message.client.user}`).catch(console.error);
 
     if (!args.length)
-      return message.channel.send({embed: {"description": `**Kullanım Şekli: ${message.client.prefix}playlist <Youtube Playlist | Playlist İsmi | Soundcloud Playlist>.**`, "color": "BLUE"}}); 
+      return message.channel.send({embed: {"description": `**Kullanım Şekli: ${message.client.prefix}playlist (Youtube Playlist), (Playlist İsmi), (Soundcloud Playlist).**`, "color": "BLUE"}}); 
     if (!channel) return message.channel.send({embed: {"description": `**Öncelikle Bir Sesli Kanala Katılmanız Gerekiyor.**`, "color": "BLUE"}}); 
 
     const permissions = channel.permissionsFor(message.client.user);
     if (!permissions.has("CONNECT"))
-      return message.channel.send({embed: {"description": `**Odaya Katılmıyorum İzinim Yok Lütfen İzinleri Değiştirin.**`, "color": "BLUE"}}); 
+      return message.channel.send({embed: {"description": `**Odaya Katılmıyorum İzinim Yok Lütfen Yetkilileri Uyarın.**`, "color": "BLUE"}}); 
     if (!permissions.has("SPEAK"))
-      return message.channel.send({embed: {"description": `**Odaya Katıldım Fakat Konuşma İznim Yok Lütfen İzinleri Değiştirin.**`, "color": "BLUE"}}); 
+      return message.channel.send({embed: {"description": `**Odaya Katıldım Fakat Konuşma İznim Yok Lütfen Yetkilileri Uyarın.**`, "color": "BLUE"}}); 
 
     const search = args.join(" ");
     const pattern = /^.*(youtu.be\/|list=)([^#\&\?]*).*/gi;
@@ -52,7 +52,7 @@ module.exports = {
         videos = await playlist.getVideos(MAX_PLAYLIST_SIZE || 10, { part: "snippet" });
       } catch (error) {
         console.error(error);
-        return message.reply("Playlist not found :(").catch(console.error);
+        return message.reply("**Play Listi:(").catch(console.error);
       }
     } else {
       try {

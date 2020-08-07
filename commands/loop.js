@@ -12,4 +12,3 @@ module.exports = {
     return queue.textChannel.send({embed: {"description": `**Döngü Sistemi ${queue.loop ? "**Açık**" : "**Kapalı**"}**`, "color": "BLUE"}}); 
   }
 };
-//Oyun Craft Abone Ol R3lease Kalp

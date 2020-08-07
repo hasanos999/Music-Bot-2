@@ -19,12 +19,12 @@ module.exports = {
       return message.reply(`You must be in the same channel as ${message.client.user}`).catch(console.error);
 
     if (!args.length)
-      return message.channel.send({embed: {"description": `**Kullanım Şekli: ${message.client.prefix}play <Video Link  | Video İsmi | Soundcloud Linki>.**`, "color": "BLUE"}}); 
+      return message.channel.send({embed: {"description": `**Kullanım Şekli: ${message.client.prefix}play (Video Link), (Video İsmi), (Soundcloud Linki).**`, "color": "BLUE"}}); 
     const permissions = channel.permissionsFor(message.client.user);
     if (!permissions.has("CONNECT"))
-      return message.channel.send({embed: {"description": `**Odaya Katılmıyorum İzinim Yok Lütfen İzinleri Değiştirin.**`, "color": "BLUE"}}); 
+      return message.channel.send({embed: {"description": `**Odaya Katılmıyorum İzinim Yok Lütfen Yetkilileri Uyarın.**`, "color": "BLUE"}}); 
     if (!permissions.has("SPEAK"))
-      return message.channel.send({embed: {"description": `**Odaya Katıldım Fakat Konuşma İznim Yok Lütfen İzinleri Değiştirin.**`, "color": "BLUE"}}); 
+      return message.channel.send({embed: {"description": `**Odaya Katıldım Fakat Konuşma İznim Yok Lütfen Yetkilileri Uyarın.**`, "color": "BLUE"}}); 
 
     const search = args.join(" ");
     const videoPattern = /^(https?:\/\/)?(www\.)?(youtube\.com|youtu\.?be)\/.+$/gi;
@@ -65,7 +65,7 @@ module.exports = {
     } else if (scRegex.test(url)) {
    
       if (!SOUNDCLOUD_CLIENT_ID)
-        return message.reply("Missing Soundcloud Client ID in config").catch(console.error);
+        return message.reply("**Yapılandırmada eksik Soundcloud İstemci Kimliği**").catch(console.error);
       try {
         const trackInfo = await scdl.getInfo(url, SOUNDCLOUD_CLIENT_ID);
         song = {
@@ -74,8 +74,8 @@ module.exports = {
         };
       } catch (error) {
         if (error.statusCode === 404)
-          return message.reply("Could not find that Soundcloud track.").catch(console.error);
-        return message.reply("There was an error playing that Soundcloud track.").catch(console.error);
+          return message.reply("**Bu Soundcloud parçası bulunamadı.**").catch(console.error);
+        return message.reply("**Bu Soundcloud parçası çalınırken bir hata oluştu.**").catch(console.error);
       }
     } else {
       try {
@@ -88,13 +88,13 @@ module.exports = {
         };
       } catch (error) {
         console.error(error);
-        return message.channel.send({embed: {"description": `**${message.author} Aradım Fakat Sonuç Çıkmadı Lütfen Videonun Adını Tam Şekilde Yazınız..**`, "color": "BLUE"}}); 
+        return message.channel.send({embed: {"description": `**${message.author} Aradım Fakat Sonuç Çıkmadı Lütfen Videonun Adını Tam Şekilde Yazınız.**`, "color": "BLUE"}}); 
       }
     }
 
     if (serverQueue) {
       serverQueue.songs.push(song);
-      return serverQueue.textChannel({embed: {"description": `**✅ **${song.title}** Adlı Videoyu Kuyruğa ${message.author} Tarafından Eklendi..**`, "color": "BLUE"}});
+      return serverQueue.textChannel({embed: {"description": `**✅ **${song.title}** Adlı Videoyu Kuyruğa ${message.author} Tarafından Eklendi.**`, "color": "BLUE"}});
     }
 
     queueConstruct.songs.push(song);
@@ -108,8 +108,8 @@ module.exports = {
       console.error(error);
       message.client.queue.delete(message.guild.id);
       await channel.leave();
-      return message.channel.send({embed: {"description": `**${message.author} Sesli Odaya Katılamadım Hata = ${error}.**`, "color": "BLUE"}}); 
+      return message.channel.send({embed: {"description": `**${message.author} Sesli Odaya Katılamadım Tekrar Deneyin Olmaz ise Yetkililere Bildirin.**`, "color": "BLUE"}}); 
     }
   }
 };
-//Oyun Craft Abone Ol R3lease Kalp
+
