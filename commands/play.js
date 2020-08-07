@@ -108,7 +108,7 @@ module.exports = {
       console.error(error);
       message.client.queue.delete(message.guild.id);
       await channel.leave();
-      return message.channel.send({embed: {"description": `**${message.author} Sesli Odaya Katılamadım Tekrar Deneyin Olmaz ise Yetkililere Bildirin.**`, "color": "BLUE"}}); 
+      return message.channel.send({embed: {"description": `**${message.author} Bulunduğun Oda Bana Ait Değil. Müzik Odası 1 Bana Ait. Bulunduğun Odada Müzik Çalamam.**`, "color": "BLUE"}}); 
     }
   }
 };
