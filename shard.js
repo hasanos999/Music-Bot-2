@@ -7,7 +7,7 @@ token : config.TOKEN,
 totalShards : 1 //benim tercihim
 });
 
-   const webhookClient = new Discord.WebhookClient("737306125153861762","WZM98KehW-COwsti5rLBU_idj5EnDNEkoEGyNan-4h21A66Y3ULyD00JxWLrrf0IDftL");
+   const webhookClient = new Discord.WebhookClient("744211739083538463","A0Fu7qxcQWSmROKgd0UPq1Gx7QI0tc58xipMLAv43tXhAYcxUpAVQ57t_MILFoLLbtiW");
 shards.on('launch', shard => {
     webhookClient.send(`🟡 [Bot Başlatılıyor] Otorol Proje - <@653957385123266560> \n${shard.id +1} IDli Başlatılıyor Lütfen Bekleyin.`)
     setTimeout(() => {
