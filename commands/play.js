@@ -22,7 +22,7 @@ module.exports = {
       return message.channel.send({embed: {"description": `**Kullanım Şekli: ${message.client.prefix}play (Video Link), (Video İsmi), (Soundcloud Linki).**`, "color": "BLUE"}}); 
     const permissions = channel.permissionsFor(message.client.user);
     if (!permissions.has("CONNECT"))
-      return message.channel.send({embed: {"description": `**Bulunduğun Oda Bana Ait Değil. Müzik Odası 1 Bana Ait. Bulunduğun Odada Müzik Çalamam.**`, "color": "BLUE"}}); 
+      return message.channel.send({embed: {"description": `**Bulunduğun Oda Bana Ait Değil. Müzik Odası 2 Bana Ait. Bulunduğun Odada Müzik Çalamam.**`, "color": "BLUE"}}); 
     if (!permissions.has("SPEAK"))
       return message.channel.send({embed: {"description": `**Odaya Katıldım Fakat Konuşma İznim Yok Lütfen Yetkilileri Uyarın.**`, "color": "BLUE"}}); 
 
@@ -108,7 +108,7 @@ module.exports = {
       console.error(error);
       message.client.queue.delete(message.guild.id);
       await channel.leave();
-      return message.channel.send({embed: {"description": `**${message.author} Bulunduğun Oda Bana Ait Değil. Müzik Odası 1 Bana Ait. Bulunduğun Odada Müzik Çalamam.**`, "color": "BLUE"}}); 
+      return message.channel.send({embed: {"description": `**${message.author} Bulunduğun Oda Bana Ait Değil. Müzik Odası 2 Bana Ait. Bulunduğun Odada Müzik Çalamam.**`, "color": "BLUE"}}); 
     }
   }
 };
